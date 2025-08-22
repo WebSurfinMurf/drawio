@@ -3,7 +3,7 @@
 ## Login to Keycloak
 1. Go to: https://keycloak.ai-servicers.com/admin
 2. Username: `admin`
-3. Password: `SecureAdminPass2024!`
+3. Password: `<see secrets/keycloak.env>`
 
 ## Create Client
 
