@@ -1,0 +1,20 @@
+# Output directory - contains generated diagrams
+/output/
+
+# Old automation directory files (being phased out)
+/automation/*.drawio
+/automation/history/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Logs
+*.log
+/automation/logs/
+
+# Temporary files
+*.tmp
+*.bak
+*~
