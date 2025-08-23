@@ -12,6 +12,14 @@ Draw.io is a self-hosted diagram editor with:
 ## Recent Work & Changes
 _This section is updated by Claude during each session_
 
+### Session: 2025-08-23
+- **Automation Migration**: Moved from Kroki (static) to N2G/Draw.io (editable) diagrams
+- Created Python-based infrastructure diagram generator
+- Made output paths dynamic using environment variables
+- Fixed network visualization (removed false routing through Keycloak)
+- Added Internet and Internal Network nodes for better topology
+- Created .gitignore to exclude generated output
+
 ### Session: 2025-08-22
 - **Initial Deployment**: Set up Draw.io with OAuth2 Proxy
 - Created deployment scripts for Keycloak integration
@@ -44,9 +52,11 @@ _This section is updated by Claude during each session_
 - **Environment**: `/home/administrator/projects/secrets/drawio.env`
 - **Cookie Secret**: `/home/administrator/projects/secrets/oauth2-proxy-cookie.secret`
 - **Keycloak Config Guide**: `/home/administrator/projects/drawio/keycloak-client-settings.md`
-- **Sample Diagrams**: Generated on-demand in `/home/administrator/projects/temp/`
-- **Generated Diagrams**: `/home/administrator/projects/data/kroki/`
-- **Diagram Generator**: `/home/administrator/projects/kroki/generate-diagrams.sh`
+- **Automation Scripts**: `/home/administrator/projects/drawio/automation/`
+  - `generate_infrastructure_diagram.py` - Creates editable Draw.io diagrams
+  - `update-diagram.sh` - Pipeline runner script
+- **Generated Output**: `/home/administrator/projects/drawio/output/` (git-ignored)
+- **Served via NGINX**: https://diagrams.nginx.ai-servicers.com/
 
 ## Access Points
 - **External**: https://drawio.ai-servicers.com (requires Keycloak login)
@@ -126,5 +136,13 @@ docker restart drawio drawio-auth-proxy
 - **Cookie Secret**: Back up the OAuth2 proxy cookie secret
 - **Keycloak Client**: Document the client configuration
 
+## Diagram Automation
+The project now includes automated infrastructure diagram generation:
+- **Technology**: N2G library creates editable Draw.io XML files
+- **Dynamic Paths**: Uses DRAWIO_BASE_PATH environment variable
+- **Docker Discovery**: Automatically finds and maps container relationships
+- **Network Visualization**: Shows proper traffic flow through Traefik
+- **Output**: Editable diagrams served via NGINX
+
 ---
-*Last Updated: 2025-08-22 by Claude*
+*Last Updated: 2025-08-23 by Claude*
