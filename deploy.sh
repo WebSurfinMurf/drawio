@@ -54,6 +54,7 @@ if [ "$OAUTH2_PROXY_ENABLED" = "true" ] && [ "$KEYCLOAK_CLIENT_SECRET" != "CHANG
         -e DRAWIO_SELF_CONTAINED="$DRAWIO_SELF_CONTAINED" \
         -e DRAWIO_LIGHTBOX="$DRAWIO_LIGHTBOX" \
         -e DRAWIO_OFFLINE="$DRAWIO_OFFLINE" \
+        -e DRAWIO_PLUGINS="1" \
         -e CATALINA_OPTS="-Dorg.apache.coyote.http11.Http11Protocol.MAX_HEADER_SIZE=65536" \
         "$DRAWIO_IMAGE"
     
@@ -114,6 +115,7 @@ else
         -e DRAWIO_SELF_CONTAINED="$DRAWIO_SELF_CONTAINED" \
         -e DRAWIO_LIGHTBOX="$DRAWIO_LIGHTBOX" \
         -e DRAWIO_OFFLINE="$DRAWIO_OFFLINE" \
+        -e DRAWIO_PLUGINS="1" \
         --label "traefik.enable=true" \
         --label "traefik.http.routers.drawio.rule=Host(\`drawio.ai-servicers.com\`)" \
         --label "traefik.http.routers.drawio.entrypoints=websecure" \

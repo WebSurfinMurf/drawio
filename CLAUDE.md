@@ -45,6 +45,8 @@ _This section is updated by Claude during each session_
 - **Cookie Secret**: `/home/administrator/projects/secrets/oauth2-proxy-cookie.secret`
 - **Keycloak Config Guide**: `/home/administrator/projects/drawio/keycloak-client-settings.md`
 - **Sample Diagrams**: Generated on-demand in `/home/administrator/projects/temp/`
+- **Generated Diagrams**: `/home/administrator/projects/data/kroki/`
+- **Diagram Generator**: `/home/administrator/projects/kroki/generate-diagrams.sh`
 
 ## Access Points
 - **External**: https://drawio.ai-servicers.com (requires Keycloak login)
