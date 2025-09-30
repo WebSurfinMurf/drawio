@@ -94,7 +94,12 @@ if [ "$OAUTH2_PROXY_ENABLED" = "true" ] && [ "$KEYCLOAK_CLIENT_SECRET" != "CHANG
         --label "traefik.http.routers.drawio.tls.certresolver=letsencrypt" \
         --label "traefik.http.services.drawio.loadbalancer.server.port=4180" \
         "$OAUTH2_PROXY_IMAGE"
-    
+
+    # Connect OAuth2 proxy to keycloak-net for authentication
+    echo "Connecting OAuth2 proxy to keycloak-net..."
+    docker network create keycloak-net 2>/dev/null || echo "Network keycloak-net already exists"
+    docker network connect keycloak-net "$OAUTH2_PROXY_CONTAINER" 2>/dev/null || true
+
     echo ""
     echo "✅ Deployed with OAuth2 Proxy authentication"
     echo "Access: https://drawio.ai-servicers.com (requires Keycloak login)"
