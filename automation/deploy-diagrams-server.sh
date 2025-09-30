@@ -109,7 +109,7 @@ docker rm diagrams-nginx diagrams-auth-proxy 2>/dev/null
 echo -e "${GREEN}Starting nginx diagram server...${NC}"
 docker run -d \
     --name diagrams-nginx \
-    --network traefik-proxy \
+    --network traefik-net \
     -v "$DATA_DIR:/usr/share/nginx/html:ro" \
     -v "$DATA_DIR/nginx-diagrams.conf:/etc/nginx/conf.d/default.conf:ro" \
     --restart unless-stopped \
@@ -120,7 +120,7 @@ if [ "$WITH_AUTH" = true ]; then
     echo -e "${GREEN}Starting OAuth2 proxy for authentication...${NC}"
     docker run -d \
         --name diagrams-auth-proxy \
-        --network traefik-proxy \
+        --network traefik-net \
         -e OAUTH2_PROXY_PROVIDER=oidc \
         -e OAUTH2_PROXY_CLIENT_ID=nginx-diagrams \
         -e OAUTH2_PROXY_CLIENT_SECRET="$CLIENT_SECRET" \
@@ -159,7 +159,7 @@ else
     
     docker run -d \
         --name diagrams-nginx \
-        --network traefik-proxy \
+        --network traefik-net \
         -v "$DATA_DIR:/usr/share/nginx/html:ro" \
         -v "$DATA_DIR/nginx-diagrams.conf:/etc/nginx/conf.d/default.conf:ro" \
         --label "traefik.enable=true" \

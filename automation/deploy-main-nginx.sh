@@ -210,7 +210,7 @@ docker rm main-nginx 2>/dev/null
 echo -e "${GREEN}Starting main nginx server...${NC}"
 docker run -d \
     --name main-nginx \
-    --network traefik-proxy \
+    --network traefik-net \
     -v "$NGINX_DATA_DIR:/usr/share/nginx/html:ro" \
     -v "$NGINX_DATA_DIR/nginx.conf:/etc/nginx/conf.d/default.conf:ro" \
     --label "traefik.enable=true" \
