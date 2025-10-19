@@ -120,7 +120,7 @@ https://keycloak.ai-servicers.com/realms/master/.well-known/openid-configuration
 ```
 
 ### 13. Update Draw.io Deployment
-1. Edit `/home/administrator/projects/secrets/drawio.env`:
+1. Edit `$HOME/projects/secrets/drawio.env`:
    ```bash
    KEYCLOAK_CLIENT_SECRET=<paste-secret-here>
    OAUTH2_PROXY_ENABLED=true

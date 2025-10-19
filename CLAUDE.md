@@ -28,8 +28,8 @@ _This section is updated by Claude during each session_
 - Created sample Mermaid diagram for testing
 
 ## Network Architecture
-- **Primary Service**: Draw.io on `traefik-proxy` network (internal only)
-- **Auth Proxy**: OAuth2 Proxy on `traefik-proxy` (exposed via Traefik)
+- **Primary Service**: Draw.io on `traefik-net` network (internal only)
+- **Auth Proxy**: OAuth2 Proxy on `traefik-net` (exposed via Traefik)
 - **Authentication**: Keycloak OIDC integration
 - **URL**: https://drawio.ai-servicers.com
 
@@ -37,20 +37,20 @@ _This section is updated by Claude during each session_
 ### Draw.io Container
 - **Container**: drawio
 - **Image**: jgraph/drawio:latest
-- **Network**: traefik-proxy (internal only)
+- **Network**: traefik-net (internal only)
 - **Port**: 8080 (not exposed directly)
 
 ### OAuth2 Proxy Container
 - **Container**: drawio-auth-proxy
 - **Image**: quay.io/oauth2-proxy/oauth2-proxy:latest
-- **Network**: traefik-proxy
+- **Network**: traefik-net
 - **Port**: 8085 → 4180
 - **Traefik Route**: drawio.ai-servicers.com
 
 ## Important Files & Paths
 - **Deploy Script**: `/home/administrator/projects/drawio/deploy.sh` (handles both auth modes)
-- **Environment**: `/home/administrator/projects/secrets/drawio.env`
-- **Cookie Secret**: `/home/administrator/projects/secrets/oauth2-proxy-cookie.secret`
+- **Environment**: `$HOME/projects/secrets/drawio.env`
+- **Cookie Secret**: `$HOME/projects/secrets/oauth2-proxy-cookie.secret`
 - **Keycloak Config Guide**: `/home/administrator/projects/drawio/keycloak-client-settings.md`
 - **Automation Scripts**: `/home/administrator/projects/drawio/automation/`
   - `generate_infrastructure_diagram.py` - Creates editable Draw.io diagrams

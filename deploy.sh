@@ -7,7 +7,7 @@
 set -e
 
 # Load environment variables
-ENV_FILE="/home/administrator/projects/secrets/drawio.env"
+ENV_FILE="$HOME/projects/secrets/drawio.env"
 if [ -f "$ENV_FILE" ]; then
     source "$ENV_FILE"
 else
@@ -36,7 +36,7 @@ if [ "$OAUTH2_PROXY_ENABLED" = "true" ] && [ "$KEYCLOAK_CLIENT_SECRET" != "CHANG
     echo "==========================================="
     
     # Generate cookie secret if not exists
-    COOKIE_SECRET_FILE="/home/administrator/projects/secrets/oauth2-proxy-cookie.secret"
+    COOKIE_SECRET_FILE="$HOME/projects/secrets/oauth2-proxy-cookie.secret"
     if [ ! -f "$COOKIE_SECRET_FILE" ]; then
         echo "Generating cookie secret..."
         python3 -c 'import os,base64; print(base64.b64encode(os.urandom(24)).decode())' > "$COOKIE_SECRET_FILE"
