@@ -7,8 +7,8 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # Use environment variable or default to user home
 BASE_PATH="${DRAWIO_BASE_PATH:-$HOME}"
-OUTPUT_DIR="${BASE_PATH}/projects/drawio/output"
-NGINX_DIR="${BASE_PATH}/projects/data/nginx-main"
+OUTPUT_DIR="${BASE_PATH}/projects/data/drawio/output"
+NGINX_DIR="${BASE_PATH}/projects/data/nginx/nginx-portal"
 DIAGRAMS_NGINX_DIR="${BASE_PATH}/projects/data/diagrams-nginx"
 
 # Colors for output

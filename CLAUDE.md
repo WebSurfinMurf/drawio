@@ -12,6 +12,17 @@ Draw.io is a self-hosted diagram editor with:
 ## Recent Work & Changes
 _This section is updated by Claude during each session_
 
+### Session: 2025-11-04
+- **Data Location Standardization**: Moved runtime data to centralized location
+  - Moved `drawio/output/` to `/projects/data/drawio/output/`
+  - Updated automation scripts to use new path
+  - Follows project data standard: all runtime data in `projects/data/{project}/`
+- **Infrastructure Simplification**: Removed main-nginx container from drawio project
+  - Portal page for nginx.ai-servicers.com moved to main nginx container
+  - Consolidated from 3 nginx containers down to 2 (nginx, diagrams-nginx)
+  - Removed deploy-main-nginx.sh from automation (no longer needed)
+  - Data moved from data/nginx-main to nginx project
+
 ### Session: 2025-08-23
 - **Automation Migration**: Moved from Kroki (static) to N2G/Draw.io (editable) diagrams
 - Created Python-based infrastructure diagram generator
@@ -55,7 +66,7 @@ _This section is updated by Claude during each session_
 - **Automation Scripts**: `/home/administrator/projects/drawio/automation/`
   - `generate_infrastructure_diagram.py` - Creates editable Draw.io diagrams
   - `update-diagram.sh` - Pipeline runner script
-- **Generated Output**: `/home/administrator/projects/drawio/output/` (git-ignored)
+- **Generated Output**: `/home/administrator/projects/data/drawio/output/` (centralized data location)
 - **Served via NGINX**: https://diagrams.nginx.ai-servicers.com/
 
 ## Access Points
