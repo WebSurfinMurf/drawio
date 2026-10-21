@@ -85,6 +85,9 @@ if [ "$OAUTH2_PROXY_ENABLED" = "true" ] && [ "$KEYCLOAK_CLIENT_SECRET" != "CHANG
         -e OAUTH2_PROXY_PASS_USER_HEADERS=false \
         -e OAUTH2_PROXY_SET_XAUTHREQUEST=false \
         -e OAUTH2_PROXY_SKIP_PROVIDER_BUTTON=true \
+        -e OAUTH2_PROXY_SCOPE="openid email profile groups" \
+        -e OAUTH2_PROXY_OIDC_GROUPS_CLAIM=groups \
+        -e OAUTH2_PROXY_ALLOWED_GROUPS="/administrators,/developers" \
         -e OAUTH2_PROXY_INSECURE_OIDC_ALLOW_UNVERIFIED_EMAIL=true \
         -e OAUTH2_PROXY_INSECURE_OIDC_SKIP_ISSUER_VERIFICATION=true \
         --label "traefik.enable=true" \
